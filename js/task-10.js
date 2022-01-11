@@ -16,7 +16,7 @@ const divBoxes = document.querySelector('#boxes');
 
 const createBoxes = function (amount) {
   amount = Number(inputRef.value);
-  console.log(amount);
+  inputRef.value = '';
 
   while (amount  > 0) {
   const newElement = document.createElement('div');
@@ -32,10 +32,15 @@ const createBoxes = function (amount) {
 }
 
   divBoxes.append(...divArray);
+  widthDiv = '30px';
+  heightDiv = '30px';
+  
 }
 
 const destroyBoxes = function () {
+  inputRef.value = '';
   divBoxes.innerHTML = '';
+  divArray.splice(0, divArray.length);
 }
 
 btnCreateRef.addEventListener('click', createBoxes);
