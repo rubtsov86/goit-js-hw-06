@@ -1,6 +1,6 @@
 const divArray = [];
-let widthDiv = '30px';
-let heightDiv = '30px';
+let sizeDiv = '30px';
+
 
 
 function getRandomHexColor() {
@@ -14,27 +14,30 @@ const divBoxes = document.querySelector('#boxes');
 
 
 
-const createBoxes = function (amount) {
-  amount = Number(inputRef.value);
-  inputRef.value = '';
+const createBoxes = function () {
 
-  while (amount  > 0) {
+  
+
+  for (let amount = Number(inputRef.value); amount > 0; amount -= 1) {
   const newElement = document.createElement('div');
-  newElement.style.width = widthDiv;
-  newElement.style.height = heightDiv;
+  newElement.style.width = sizeDiv;
+  newElement.style.height = sizeDiv;
     newElement.style.backgroundColor = getRandomHexColor();
     
     divArray.push(newElement); 
-    amount -= 1;
-    widthDiv = `${parseInt(widthDiv) + 10}px`;
-    heightDiv = `${parseInt(heightDiv)+10}px`;
+    sizeDiv = `${parseInt(sizeDiv) + 10}px`;
     
-}
+  }
+ 
 
   divBoxes.append(...divArray);
-  widthDiv = '30px';
-  heightDiv = '30px';
+  resetBoxes();
   
+}
+
+const resetBoxes = function () {
+  inputRef.value = '';
+  sizeDiv = '30px';
 }
 
 const destroyBoxes = function () {
